@@ -3,6 +3,16 @@ using HPlusSport.Security.Web.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
+
+/*Course: 		Web Programming 3
+* Assessment: 	Milestone 3
+* Created by: 	JULIEN HALDE - 2256375
+* Date: 		12/11/2024
+* Class Name: 	Program.cs
+* Description: 	Explain what the class stores and its functionality. 
+* Time Task B):	Record how long did this tutorial take you to do without breaks, in hours. 
+*/
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
