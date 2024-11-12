@@ -8,8 +8,8 @@
 </header>
 <div class="storefront-sorting"><div class="woocommerce-notices-wrapper"></div></div>
 
-<div>Your search for @Html.Raw(ViewData["SearchTerm"]) yielded no results.</div>
+<div>Your search for @ViewData["SearchTerm"] yielded no results.</div>
 
 <script>
-    jQuery("h1.page-title").html('Search Result: @ViewBag.SearchTerm');
+    jQuery("h1.page-title").html('Search Result: @System.Web.HttpUtility.JavaScriptStringEncode(ViewBag.SearchTerm)');
 </script>
