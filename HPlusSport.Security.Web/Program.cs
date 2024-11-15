@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore;
 * Created by: 	JULIEN HALDE - 2256375
 * Date: 		12/11/2024
 * Class Name: 	Program.cs
-* Description: 	Explain what the class stores and its functionality. 
-* Time Task B):	Record how long did this tutorial take you to do without breaks, in hours. 
+* Description: 	Configures an ASP.NET Core application with MVC, authentication, session handling, and a SQL Server database
+* Time Task B):	1.5H
 */
 
 var builder = WebApplication.CreateBuilder(args);
