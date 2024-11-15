@@ -79,19 +79,16 @@ public class ShopController : Controller
     }
 
     // GET: Shop/AdminOrder/1
-    public ActionResult AdminOrder(string id)
+    public ActionResult AdminOrder(int id)
     {
-        int idAsInt = Int32.Parse(new string(id.Trim().TakeWhile(c => char.IsDigit(c)).ToArray()));
-        var order = _context.Orders.Include("Products").Where(o => o.Id == idAsInt).FirstOrDefault();
+        var order = _context.Orders.Include("Products").Where(o => o.Id == id).FirstOrDefault();
         if (order == null)
         {
             return NotFound();
         }
 
-        var totalAmount = _context.Database.SqlQueryRaw<decimal>(
-            $"SELECT SUM(Product.Price) AS Value FROM Product WHERE Product.Id IN (SELECT ProductsId FROM [OrderProduct (Dictionary<string, object>)] WHERE OrdersId={id})"
-            );
-        ViewData["TotalAmount"] = totalAmount.First();
+        var totalAmount = order.Products.Sum(p => p.Price);
+        ViewData["TotalAmount"] = totalAmount;
 
         return View(order);
     }
