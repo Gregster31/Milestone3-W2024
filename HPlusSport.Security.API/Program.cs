@@ -5,6 +5,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(
+        "Temperature API Policy",
+        builder =>
+        {
+            builder.WithOrigins("https://localhost:6002");
+        });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -16,11 +26,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors();
+
 app.MapGet("/temperature", () =>
 {
     return new Random().Next(30, 90);
 })
 .WithName("GetTemperature")
-.WithOpenApi();
+.WithOpenApi()
+.RequireCors("Temperature API Policy");
 
 app.Run();
