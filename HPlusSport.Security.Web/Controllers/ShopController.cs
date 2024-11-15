@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 namespace HPlusSport.Security.Web.Controllers;
 
 [Authorize]
-[IgnoreAntiforgeryToken(Order = 1001)]
 public class ShopController : Controller
 {
     private readonly ShopContext _context;
